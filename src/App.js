@@ -11,12 +11,13 @@ function App() {
   return (
     <Router>
       <Navbar />
-      
+
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route path='/error' element={<Error />} />
         <Route path='/cocktail/:id' element={<SingleCockTail />} />
+        <Route path='/error' element={<Error />} />
+        <Route path='*' element={<Error />} />
       </Routes>
     </Router>
   );
