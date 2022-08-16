@@ -8,7 +8,7 @@ const AppContext = React.createContext()
 
 // Create The Provider Component
 const AppProvider = ({ children }) => {
-  
+
   // Setting State used in the App
   const [cockTailData, setCockTailData] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
@@ -16,7 +16,6 @@ const AppProvider = ({ children }) => {
 
   return <AppContext.Provider value={{
     isLoading,
-    searchTerm,
     cockTailData,
     setSearchTerm,
   }}>

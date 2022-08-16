@@ -4,10 +4,18 @@ import Loading from './Loading'
 
 const CockTailList = () => {
   // Getting cockTailData state from contextProvider
-  const { CockTailData, isLoading } = useGlobalContext()
+  const { cockTailData, isLoading } = useGlobalContext()
 
   if (isLoading) {
     return <Loading />
+  }
+
+  if (cockTailData.length < 1) {
+    return (
+      <h2 className='section-title'>
+        No CockTails found for your search term!
+      </h2>
+    )
   }
 
   return (
