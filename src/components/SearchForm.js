@@ -12,6 +12,10 @@ const SearchForm = () => {
     searchValue.current.focus()
   }, []) 
 
+  // Function to prevent webpage reload when enter button is clicked
+  const formSubmitHandler = (e) => {
+    e.preventDefault()
+  }
   // function to monitor input value
   const searchCockTailHandler = () => {
     setSearchTerm(searchValue.current.value)
@@ -19,7 +23,7 @@ const SearchForm = () => {
   
   return (
     <section className="section search">
-      <form className="search-form">
+      <form className="search-form" onSubmit={formSubmitHandler}>
         <div className="form-control">
           <label htmlFor="">Search Your Favorite Cocktail</label>
           <input type="text" id="name" ref={searchValue} onChange={searchCockTailHandler}/>
