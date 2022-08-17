@@ -11,7 +11,7 @@ const AppProvider = ({ children }) => {
 
   // Setting State used in the App
   const [cockTailData, setCockTailData] = useState([])
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm, setSearchTerm] = useState('a')
   const [isLoading, setIsLoading] = useState(true)
 
   // Fetching The Data From URL
@@ -19,7 +19,7 @@ const AppProvider = ({ children }) => {
     setIsLoading(false)
     try {
       const response = await fetch(`${URL}${searchTerm}`)
-      const responseData = response.json()
+      const responseData = await response.json()
       const { drinks } = responseData
 
       if (drinks) {
@@ -28,6 +28,8 @@ const AppProvider = ({ children }) => {
 
           return { id: idDrink, name: strDrink, image: strDrinkThumb, info: strAlcoholic, glass: strGlass }
         })
+        console.log(cockTailItem)
+
       } else {
         setCockTailData([])
       }
@@ -37,6 +39,11 @@ const AppProvider = ({ children }) => {
       console.log(error.message)
     }
   }
+
+  // Use useEffect Hook to Fetch the Data After Each Rendering
+  useEffect(() => {
+    fetchData()
+  }, [searchTerm])
 
   return <AppContext.Provider value={{
     isLoading,
