@@ -35,9 +35,9 @@ const AppProvider = ({ children }) => {
         setCockTailData([])
       }
       setIsLoading(false)
-
     } catch (error) {
       console.log(error.message)
+      setIsLoading(false)
     }
   }
 
