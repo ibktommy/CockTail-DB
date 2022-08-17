@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const CockTail = ({ id, glass, image, info, name }) => {
   return (
@@ -11,6 +12,9 @@ const CockTail = ({ id, glass, image, info, name }) => {
         <h3>{name}</h3>
         <h4>{glass}</h4>
         <p>{info}</p>
+        <Link className='btn btn-primary btn-details' to={`/cocktail/${id}`}>
+          Details
+        </Link>
       </div>
     </article>
   )
