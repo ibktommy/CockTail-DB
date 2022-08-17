@@ -14,6 +14,30 @@ const AppProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [isLoading, setIsLoading] = useState(true)
 
+  // Fetching The Data From URL
+  const fetchData = async () => {
+    setIsLoading(false)
+    try {
+      const response = await fetch(`${URL}${searchTerm}`)
+      const responseData = response.json()
+      const { drinks } = responseData
+
+      if (drinks) {
+        const cockTailItem = drinks.map((drinkItem) => {
+          const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } = drinkItem
+
+          return { id: idDrink, name: strDrink, image: strDrinkThumb, info: strAlcoholic, glass: strGlass }
+        })
+      } else {
+        setCockTailData([])
+      }
+      setIsLoading(false)
+
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
   return <AppContext.Provider value={{
     isLoading,
     cockTailData,
