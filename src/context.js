@@ -16,7 +16,7 @@ const AppProvider = ({ children }) => {
 
   // Fetching The Data From URL
   const fetchData = async () => {
-    setIsLoading(false)
+    setIsLoading(true)
     try {
       const response = await fetch(`${URL}${searchTerm}`)
       const responseData = await response.json()
