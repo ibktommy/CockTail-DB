@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useState, useEffect, useContext, useCallback } from "react"
 
 // API URL
 const URL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
@@ -15,7 +15,7 @@ const AppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
 
   // Fetching The Data From URL
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setIsLoading(true)
     try {
       const response = await fetch(`${URL}${searchTerm}`)
@@ -39,12 +39,12 @@ const AppProvider = ({ children }) => {
       console.log(error.message)
       setIsLoading(false)
     }
-  }
+  }, [searchTerm])
 
   // Use useEffect Hook to Fetch the Data After Each Rendering
   useEffect(() => {
     fetchData()
-  }, [searchTerm])
+  }, [searchTerm, fetchData])
 
   return <AppContext.Provider value={{
     isLoading,
