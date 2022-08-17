@@ -28,7 +28,7 @@ const AppProvider = ({ children }) => {
 
           return { id: idDrink, name: strDrink, image: strDrinkThumb, info: strAlcoholic, glass: strGlass }
         })
-        
+
         setCockTailData(cockTailItem)
 
       } else {

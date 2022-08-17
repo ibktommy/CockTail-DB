@@ -1,8 +1,18 @@
 import React from 'react'
 
-const CockTail = () => {
+const CockTail = ({ id, glass, image, info, name }) => {
   return (
-    <div>CockTail</div>
+    <article className="cocktail">
+      <div className="img-container">
+        <img src={image} alt={name} />
+      </div>
+
+      <div className="cocktail-footer">
+        <h3>{name}</h3>
+        <h4>{glass}</h4>
+        <p>{info}</p>
+      </div>
+    </article>
   )
 }
 
