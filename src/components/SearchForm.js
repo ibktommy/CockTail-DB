@@ -5,11 +5,11 @@ const SearchForm = () => {
   // Getting searchTerm-state from the contextProvider
   const { setSearchTerm } = useGlobalContext()
   // Seeting useRef Hook for the Form Input-Field
-  const { searchValue } = useRef('')
+  const searchValue = useRef('')
 
   // function to monitor input value
   const searchCockTailHandler = () => {
-    setSearchTerm(searchValue)
+    setSearchTerm(searchValue.current.value)
   }
   
   return (

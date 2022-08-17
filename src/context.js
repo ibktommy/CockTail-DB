@@ -11,7 +11,7 @@ const AppProvider = ({ children }) => {
 
   // Setting State used in the App
   const [cockTailData, setCockTailData] = useState([])
-  const [searchTerm, setSearchTerm] = useState('a')
+  const [searchTerm, setSearchTerm] = useState('')
   const [isLoading, setIsLoading] = useState(true)
 
   // Fetching The Data From URL
